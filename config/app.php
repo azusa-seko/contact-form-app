@@ -22,7 +22,7 @@ return [
 
     'timezone' => 'UTC',
 
-    'locale' => 'en',
+    'locale' => 'ja',
 
     'fallback_locale' => 'en',
 
@@ -33,24 +33,21 @@ return [
     'cipher' => 'AES-256-CBC',
 
     'maintenance' => [
-        'driver' => 'file',   
+        'driver' => 'file',
     ],
 
-    
-
     'providers' => ServiceProvider::defaultProviders()->merge([
-        
+
         AppServiceProvider::class,
         AuthServiceProvider::class,
-        
+
         EventServiceProvider::class,
         RouteServiceProvider::class,
         FortifyServiceProvider::class,
     ])->toArray(),
 
-
     'aliases' => Facade::defaultAliases()->merge([
-        
+
     ])->toArray(),
 
 ];

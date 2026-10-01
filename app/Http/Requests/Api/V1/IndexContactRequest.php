@@ -32,4 +32,12 @@ class IndexContactRequest extends FormRequest
             'page' => ['nullable', 'integer', 'min:1'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'gender.in' => '性別の値が不正です',
+            'category_id.exists' => '選択されたカテゴリーが存在しません',
+        ];
+    }
 }

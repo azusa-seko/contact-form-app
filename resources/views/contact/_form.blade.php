@@ -209,3 +209,20 @@
         @enderror
     </div>
 </div>
+
+<!--電話番号3つの入力欄を1つのtelにまとめる -->
+<!--tel1空欄、tel2,3入力済みの際The tel field format is invalid.となってしまうため -->
+<script>
+    const tel1 = document.getElementById('tel1');
+    const tel2 = document.getElementById('tel2');
+    const tel3 = document.getElementById('tel3');
+    const tel = document.getElementById('tel');
+
+    function updateTel() {
+        tel.value = tel1.value + tel2.value + tel3.value;
+    }
+
+    tel1.addEventListener('input', updateTel);
+    tel2.addEventListener('input', updateTel);
+    tel3.addEventListener('input', updateTel);
+</script>

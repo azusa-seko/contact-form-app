@@ -5,11 +5,7 @@ use Pdo\Mysql;
 
 return [
 
-    
-
     'default' => env('DB_CONNECTION', 'mysql'),
-
-
 
     'connections' => [
 
@@ -74,9 +70,7 @@ return [
 
     ],
 
-
     'migrations' => 'migrations',
-
 
     'redis' => [
 

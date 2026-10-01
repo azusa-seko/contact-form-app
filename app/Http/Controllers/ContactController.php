@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExportContactRequest;
 use App\Http\Requests\StoreContactRequest;
 use App\Models\Category;
 use App\Models\Contact;
@@ -10,10 +11,26 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::all();
         $tags = Tag::all();
+
+        if ($request->hasAny([
+            'first_name',
+            'last_name',
+            'gender',
+            'email',
+            'tel',
+            'address',
+            'building',
+            'category_id',
+            'tag_ids',
+            'detail',
+        ])) {
+
+            session()->flashInput($request->all());
+        }
 
         return view('contact.index', compact('categories', 'tags'));
 
@@ -44,7 +61,7 @@ class ContactController extends Controller
             'detail' => $validated['detail']]);
 
         if (! empty($validated['tag_ids'])) {
-            $contact->tags()->attach($validated['tag_ids']);
+            $contact->tags()->sync($validated['tag_ids']);
         }
 
         return redirect('/thanks');
@@ -56,7 +73,7 @@ class ContactController extends Controller
         return view('contact.thanks');
     }
 
-    public function export(Request $request)
+    public function export(ExportContactRequest $request)
     {
         $query = Contact::query();
 

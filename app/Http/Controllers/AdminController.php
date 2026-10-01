@@ -11,6 +11,13 @@ class AdminController extends Controller
 {
     public function index(Request $request)
     {
+        $request->validate([
+            'keyword' => ['nullable', 'string', 'max:255'],
+            'gender' => ['nullable', 'integer', 'in:0,1,2,3'],
+            'category_id' => ['nullable', 'integer', 'exists:categories,id'],
+            'date' => ['nullable', 'date'],
+        ]);
+
         $query = Contact::query();
 
         // キーワード入力時のみ検索
@@ -58,6 +65,13 @@ class AdminController extends Controller
 
     public function exportCsv(Request $request)
     {
+        $request->validate([
+            'keyword' => ['nullable', 'string', 'max:255'],
+            'gender' => ['nullable', 'integer', 'in:0,1,2,3'],
+            'category_id' => ['nullable', 'integer', 'exists:categories,id'],
+            'date' => ['nullable', 'date'],
+        ]);
+
         $query = Contact::query();
 
         if ($request->filled('keyword')) {
