@@ -275,4 +275,4 @@ Feature TestおよびUnit Testを実装。
 
 ## 作成者
 
-[作成者名]
+瀬古　梓
