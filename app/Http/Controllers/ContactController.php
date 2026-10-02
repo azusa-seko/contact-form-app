@@ -78,7 +78,6 @@ class ContactController extends Controller
         $query = Contact::query();
 
         if ($request->filled('keyword')) {
-            // キーワード検索
             $keyword = "%{$request->keyword}%";
             $query->where(function ($searchQuery) use ($keyword) {
                 $searchQuery->where('first_name', 'like', $keyword)
@@ -88,17 +87,14 @@ class ContactController extends Controller
         }
 
         if ($request->gender != 0) {
-            // 性別検索
             $query->where('gender', $request->gender);
         }
 
         if ($request->filled('category_id')) {
-            // カテゴリ検索
             $query->where('category_id', $request->category_id);
         }
 
         if ($request->filled('date')) {
-            // 日付検索
             $query->whereDate('created_at', $request->date);
         }
 

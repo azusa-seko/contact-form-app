@@ -208,7 +208,6 @@ docker run --rm \
 | Container           | Docker / Laravel Sail |
 | Database Management | phpMyAdmin            |
 | Authentication      | Laravel Fortify       |
-| API Authentication  | Laravel Sanctum       |
 | CSS                 | Tailwind CSS          |
 | JavaScript          | Alpine.js             |
 | Frontend Build Tool | Vite                  |

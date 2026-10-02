@@ -20,11 +20,9 @@ class AdminController extends Controller
 
         $query = Contact::query();
 
-        // キーワード入力時のみ検索
         if ($request->filled('keyword')) {
             $keyword = "%{$request->keyword}%";
 
-            // 名前・メールの検索を書く
             $query->where(function ($searchQuery) use ($keyword) {
                 $searchQuery->where('first_name', 'like', $keyword)
                     ->orWhere('last_name', 'like', $keyword)

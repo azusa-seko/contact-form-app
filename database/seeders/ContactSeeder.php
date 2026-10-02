@@ -20,7 +20,6 @@ class ContactSeeder extends Seeder
         $categories = Category::pluck('id')->toArray();
         $tags = Tag::pluck('id')->toArray();
 
-        // 20件データ作る
         for ($i = 0; $i < 20; $i++) {
             $contact = Contact::create([
                 'category_id' => $faker->randomElement($categories),

@@ -11,9 +11,6 @@ use App\Models\Contact;
 
 class ContactController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(IndexContactRequest $request)
     {
         $query = Contact::with(['category', 'tags']);
@@ -66,9 +63,6 @@ class ContactController extends Controller
             ->setStatusCode(201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Contact $contact)
     {
         $contact->load(['category', 'tags']);
@@ -93,9 +87,6 @@ class ContactController extends Controller
         return new ContactResource($contact);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Contact $contact)
     {
         $contact->delete();
